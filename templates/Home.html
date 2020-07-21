@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<div class="container">
+    <h3> find the good opportunities
+
+    </h3>
+
+    <br>
+    <strong>As user</strong>
+    <form method="post">
+         {% csrf_token %}
+        {{ forms.as_p }}
+        <input type="submit" value="l">
+    </form>
+    <a href="{%url 'login-user'%}"><input type="submit" value="Login" class="btn btn-success"></a>
+    <a href="{%url 'register-user'%}"><input type="submit" value="Resgister" class="btn btn-primary"></a>
+    <br>
+    <br>
+    <strong>As Company</strong>
+    <a href="{%url 'login-company'%}"><input type="submit" value="Login" class="btn btn-success"></a>
+    <a href="{%url 'register-company'%}"><input type="submit" value="Resgister" class="btn btn-primary"></a>
+ <form method="post">
+         {% csrf_token %}
+        {{ forms.as_p }}
+     <input value="log" type="submit">
+    </form>
+</div>
+{%endblock%}
