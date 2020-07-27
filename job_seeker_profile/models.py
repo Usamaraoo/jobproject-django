@@ -30,7 +30,7 @@ class EducationDetail(models.Model):
 
 
 class CV(models.Model):
-    user_account_id = models.ForeignKey('user_management.UserAccount', on_delete=models.CASCADE)
+    user_account_id = models.ForeignKey('user_management.UserAccount',primary_key=True, on_delete=models.CASCADE,unique=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     current_salary = models.CharField(max_length=20, blank=True, null=True)
@@ -47,6 +47,8 @@ class CV(models.Model):
 
     def __str__(self):
         return self.first_name
+
+
 
 
 class PDF(models.Model):

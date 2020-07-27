@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 class JobPost(models.Model):
     id = models.AutoField(primary_key=True)
-    # posted_by_id = models.ForeignKey('CompanyProfile.Company',on_delete=models.DO_NOTHING)
-    job_type_id = models.ForeignKey('JobType',on_delete=models.DO_NOTHING)
+    # posted_by_id = models.ForeignKey('CompanyProfile.Company',on_delete=models.DO_NOTHING,related_name='+')
+    job_type_id = models.ForeignKey('JobType',on_delete=models.DO_NOTHING ,related_name='+')
     created_date = models.DateTimeField(auto_now_add=True)
     job_description = models.CharField(max_length=500)
     is_active = models.BooleanField()

@@ -3,5 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('', index),
-    path('cv/', CreateCV.as_view(), name='cv')
+    path('create_cv/', CreateCV.as_view(), name='createcv'),
+    path('cv/<int:pk>', CvViewer.as_view(), name='cv'),
+    path('cv_update/<int:pk>', CvUpdate.as_view(), name='cv_update'),
 ]
