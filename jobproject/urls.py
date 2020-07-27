@@ -13,5 +13,7 @@ urlpatterns = [
     path('job_seeker_profile/', include('job_seeker_profile.urls')),
     path('user_management/', include('user_management.urls')),
     path('CompanyProfile/', include('CompanyProfile.urls')),
+    # for login
+    path('', include("django.contrib.auth.urls"))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

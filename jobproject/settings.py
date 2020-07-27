@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'job_post_management',
     'user_management',
     'CompanyProfile',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -117,13 +118,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-# email verification
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'usamakakeem@gmail.com'
-EMAIL_HOST_PASSWORD = 'Usama143'
-EMAIL_PORT = 587
 
+CRISPY_TEMPLATE_PACK="bootstrap4"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 

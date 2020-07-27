@@ -9,34 +9,19 @@ from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from .models import (UserAccount, models)
-from .forms import (UserSignupForm, UserLogin)
+from .forms import RegisterForm
 from .models import UserAccount
 from django.forms import ValidationError
-def usersignup(request):
-    form = UserSignupForm
 
-    if request.method == 'POST':
-        form = UserSignupForm(request.POST ,request.FILES or None)
 
+def usersignup(response):
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-            from django.contrib import messages
-            messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('/')
-        else:
-            ValidationError('Error')
+
+        return redirect("/")
     else:
-        forms = UserSignupForm()
-    context = {'forms': form}
-    return render(request, 'user_management/forms.html',context )
+        form = RegisterForm()
 
-
-def user_login(request):
-    forms = UserLogin
-    if request.method == 'POST':
-        forms = UserLogin(request.POST)
-        if forms.is_valid():
-            return HttpResponse("loggedin")
-
-    context = {'forms': forms}
-    return render(request, 'Home.html', context)
+    return render(response, "registration/register.html", {"form": form})

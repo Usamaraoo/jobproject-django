@@ -1,6 +1,18 @@
 from django.db import models
 
 
+class Location(models.Model):
+    id = models.AutoField(primary_key=True)
+    street_address = models.TextField(blank=True, null=True)
+    city = models.CharField(max_length=50, blank=False, null=False)
+    state = models.CharField(max_length=50, blank=False, null=False)
+    country = models.CharField(max_length=50, blank=False, null=False)
+    zip = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return self.city
+
+
 class EducationDetail(models.Model):
     user_account_id = models.ForeignKey('CV', on_delete=models.CASCADE)
     certificate_degree_name = models.CharField(max_length=50)
@@ -9,12 +21,13 @@ class EducationDetail(models.Model):
     start_date = models.DateField()
     complete_date = models.DateField(null=True, blank=True)
     percentage = models.IntegerField(null=True, blank=True)
-    cgpa = models.DecimalField(max_digits=5, decimal_places=2,null=True, blank=True)
+    cgpa = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     website = models.CharField(max_length=250, null=True, blank=True)
     location_id = models.ForeignKey('Location', on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.user_account_id
+
 
 class CV(models.Model):
     user_account_id = models.ForeignKey('user_management.UserAccount', on_delete=models.CASCADE)
@@ -29,23 +42,12 @@ class CV(models.Model):
     reference_phone = models.CharField(max_length=20, blank=True, null=True)
     gender = models.BooleanField()
     mtirial_status = models.BooleanField(default=False)
-    location_id = models.ForeignKey('Location', on_delete=models.DO_NOTHING)
+    location_id = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     birth_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.first_name
 
-
-class Location(models.Model):
-    id = models.AutoField(primary_key=True)
-    street_address = models.TextField(blank=True, null=True)
-    city = models.CharField(max_length=50, blank=False, null=False)
-    state = models.CharField(max_length=50, blank=False, null=False)
-    country = models.CharField(max_length=50, blank=False, null=False)
-    zip = models.CharField(max_length=50, blank=True, null=True)
-
-    def __str__(self):
-        return self.city
 
 class PDF(models.Model):
     id = models.AutoField(primary_key=True)
@@ -54,6 +56,7 @@ class PDF(models.Model):
 
     def __str__(self):
         return self.user_account_id
+
 
 class Reference(models.Model):
     id = models.AutoField(primary_key=True)
@@ -75,6 +78,7 @@ class ExperienceDetail(models.Model):
 
     def __str__(self):
         return self.user_account_id
+
 
 class SkillSet(models.Model):
     id = models.AutoField(primary_key=True)

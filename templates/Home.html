@@ -2,28 +2,21 @@
 
 {%block content%}
 <div class="container">
-    <h3> find the good opportunities
+    <h3> find the good opportunities</h3>
 
-    </h3>
-
+    {%if user.is_authenticated%}
+    <h1>welcome {{user}}</h1>
+    <button class="btn btn-danger"><a href="/logout">logout</a></button>
+    {%else%}
     <br>
     <strong>As user</strong>
-    <form method="post">
-         {% csrf_token %}
-        {{ forms.as_p }}
-        <input type="submit" value="l">
-    </form>
-    <a href="{%url 'login-user'%}"><input type="submit" value="Login" class="btn btn-success"></a>
+    <a href="/login"><input type="submit" value="Login" class="btn btn-success"></a>
     <a href="{%url 'register-user'%}"><input type="submit" value="Resgister" class="btn btn-primary"></a>
     <br>
     <br>
     <strong>As Company</strong>
     <a href="{%url 'login-company'%}"><input type="submit" value="Login" class="btn btn-success"></a>
     <a href="{%url 'register-company'%}"><input type="submit" value="Resgister" class="btn btn-primary"></a>
- <form method="post">
-         {% csrf_token %}
-        {{ forms.as_p }}
-     <input value="log" type="submit">
-    </form>
 </div>
+{%endif%}
 {%endblock%}
