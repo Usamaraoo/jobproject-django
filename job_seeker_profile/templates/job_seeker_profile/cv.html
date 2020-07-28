@@ -6,26 +6,28 @@
 
     <h1>CV </h1>
     <hr>
+    <img class="thumbnail" src="{{cv.user_account_id.user_image.url}}">
+    <hr>
     <h2>{{cv.id}}</h2>
-    <h2>{{cv.first_name}}</h2>
-    <h2>{{cv.last_name}}</h2>
-    <h4>{{ cv.current_salary }}</h4>
-    <h4>{{ cv.email }}</h4>
-    <h4>{{ cv.about }}</h4>
-    <h4>{{ cv.phone }}</h4>
-    <h4>{{ cv.reference_name }}</h4>
-    <h4>{{ cv.reference_email }}</h4>
-    <h4>{{ cv.reference_phone }}</h4>
-    <h4>{{ cv.gender }}</h4>
-    <h4>{{ cv.mtirial_status }}</h4>
-    <h4>{{ cv.location_id }}</h4>
-    <h4>{{ cv.birth_date }}</h4>
+    <h2>First name: {{cv.first_name}}</h2>
+    <h2>Last name: {{cv.last_name}}</h2>
+    <h4>current salary :{{ cv.current_salary }}</h4>
+    <h4>Email: {{ cv.email }}</h4>
+    <h4>about: {{ cv.about }}</h4>
+    <h4>contact: {{ cv.phone }}</h4>
+    <h4>Reference name: {{ cv.reference_name }}</h4>
+    <h4>Reference email: {{ cv.reference_email }}</h4>
+    <h4>Reference contact: {{ cv.reference_phone }}</h4>
+    <h4>Gender: {{ cv.gender }}</h4>
+    <h4>Marital status: {{ cv.mtirial_status }}</h4>
+    <h4>From:  {{ cv.location_id }}</h4>
+    <h4>Date of birth:  {{ cv.birth_date }}</h4>
 
     <strong><a href="{% url 'cv_update' user.id%}">Change Something?</a></strong>
 
     {%else%}
     <h3><a href="/login">login</a> or <a href="{% url 'register-user' %}">create account first</a></h3>
-{%endif%}
+    {%endif%}
 </div>
 
 {%endblock%}

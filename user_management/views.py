@@ -1,6 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
 from .forms import UserSignupForm
 from .models import UserAccount
 from django.forms import ValidationError
